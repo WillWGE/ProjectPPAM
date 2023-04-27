@@ -18,9 +18,13 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.ProjectWG.ProjectPPAM",
+      "googleServicesFile": "./google-services/GoogleService-Info.plist",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.ProjectWG.ProjectPPAM",
+      "googleServicesFile": "./google-services/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -28,6 +32,22 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "@react-native-firebase/app","@react-native-google-signin/google-signin",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "41cc4984-5c05-478c-9e3c-95de395aea6c"
+      }
     }
   }
 }
