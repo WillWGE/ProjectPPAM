@@ -1,43 +1,51 @@
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, View,Image } from "react-native";
+import { StyleSheet, View,Image, ImageBackground } from "react-native";
 import { Button, Text } from "react-native-paper";
-import theme from "../../config/theme";
-const backimage=require("../../assets/studiu.png");
+
+const backimage=require("../../assets/images/splashbackground.png");
 
 export default function Landing() {
 
     const navigation = useNavigation();
 
-    return <View style={styles.container}>
-                <Image source={backimage} style={styles.backimage}/>
-                <Text variant="headlineLarge" style={styles.title}>Welcome to StudiU App!</Text>
-                <View style={styles.buttonContainer}>
-                    <Button mode="contained" onPress={() => navigation.navigate("Login")}>Login</Button>
-                    <Text style={styles.or}>or</Text>
-                    <Button mode="outlined" onPress={() => navigation.navigate("Register")}>Create a new account</Button>
-                </View>
+    return  <View style={styles.container}>
+                <ImageBackground source={backimage} style={styles.background}>
+                    <Text variant="headlineLarge" style={[styles.title,styles.Text]}> StudiU</Text>
+                    <View style={styles.buttonContainer}>
+                        <Button mode="contained" style={styles.login} onPress={() => navigation.navigate("Login")}>Login</Button>
+                        <Button mode="contained" style={styles.create} onPress={() => navigation.navigate("Register")}>Create a new account</Button>
+                    </View>
+                </ImageBackground>
             </View>
+        
     
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor:"#7fffd4"
+    container:{
+        flex:1,
+    },
+    background:{
+        flex:1,
     },
     buttonContainer: {
-        marginTop: 20
+        marginTop:'10%',
+        alignItems:'center'
     },
-    or: {
-        alignSelf: "center"
+    Text: {
+        marginTop:'50%',
+        alignSelf: "center",
     },
     title: {
-        color: theme.colors.primary
+        color: 'black',
+        fontWeight:'bold'
     },
-    backimage: {
-        width:"100%",
-        height:300
+    login:{
+        marginTop:'10%',
+        width:'50%'
+    },
+    create:{
+        marginTop:'10%',
+        width:"50%"
     }
 })
