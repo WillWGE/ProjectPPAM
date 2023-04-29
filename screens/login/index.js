@@ -79,13 +79,13 @@ export default function Login() {
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.btnContainer}>
                                 <GoogleSigninButton
-                                style={{width:'100%',marginTop:0,borderRadius:50,borderWidth:1,marginHorizontal:20,textAlign:'center'}}
+                                style={{width:'100%',marginTop:0,borderRadius:10,borderWidth:2,marginHorizontal:20,textAlign:'center'}}
                                 onPress={onGoogleButtonPress}
                                 />
                             </TouchableOpacity>
                             <TextInput
                                 mode="outlined"
-                                placeholder="Email"
+                                placeholder="Email address"
                                 value={email}
                                 onChangeText={handleChange(setEmail)}
                                 left={<TextInput.Icon icon="email" />}

@@ -32,7 +32,7 @@ function Main () {
 };
 
 export default function Home() {
-
+    
     return (
     <Tab.Navigator initialRouteName="Main">
                 <Tab.Screen name="Main" component={Main} options={{headerShown: false,tabBarIcon:({color,size}) =>(<MaterialCommunityIcons name="home" color={color} size={size}/>),}}/>

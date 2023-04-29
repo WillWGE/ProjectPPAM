@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   timerText: {
-    fontSize: 50,
+    fontSize: 40,
     marginBottom: 10,
   },
   buttonContainer: {

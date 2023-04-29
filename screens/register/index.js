@@ -1,9 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { ImageBackground, StyleSheet, View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 import theme from "../../config/theme";
 import auth from '@react-native-firebase/auth';
+
+const backimage=require("../../assets/images/signup.png");
 
 export default function Register() {
 
@@ -29,47 +31,54 @@ export default function Register() {
 
     }
     return <View style={styles.container}>
-        <Text variant="headlineLarge" style={styles.title}>PPAM Project</Text>
-        <Text variant="titleLarge" style={styles.subtitile}>Create a New Account</Text>
-        <View style={styles.formContainer}>
-            <TextInput
-                value={email}
-                mode="outlined"
-                placeholder="Email"
-                onChangeText={handleChange(setEmail)}
-                left={<TextInput.Icon icon="email" color={(isFocused) => isFocused ? theme.colors.primary : theme.colors.secondary} />}
-                autoFocus
-            />
-            <TextInput
-                value={password}
-                mode="outlined"
-                placeholder="Password"
-                onChangeText={handleChange(setPassword)}
-                left={<TextInput.Icon icon="key" color={(isFocused) => isFocused ? theme.colors.primary : theme.colors.secondary} />}
-                secureTextEntry
-            />
-            <TextInput
-                value={repeatPassword}
-                mode="outlined"
-                onChangeText={handleChange(setRepeatPassword)}
-                placeholder="Repeat Password"
-                left={<TextInput.Icon icon="key" color={(isFocused) => isFocused ? theme.colors.primary : theme.colors.secondary} />}
-                secureTextEntry
-            />
-            <View style={styles.btnContainer}>
-                <Button mode="contained" onPress={handleRegister}>Register</Button>
-                <Text style={styles.or}>or</Text>
-                <Button onPress={() => navigation.navigate("Login")} >Login</Button>
+            <ImageBackground source={backimage} style={styles.background}>
+                <Text variant="titleLarge" style={styles.subtitle}>Create Your Account</Text>
+                <View style={styles.formContainer}>
+                    <TextInput
+                        value={email}
+                        mode="outlined"
+                        placeholder="Email address"
+                        onChangeText={handleChange(setEmail)}
+                        left={<TextInput.Icon icon="email" color={(isFocused) => isFocused ? theme.colors.primary : theme.colors.secondary} />}
+                        autoFocus
+                    />
+                    <TextInput
+                        value={password}
+                        mode="outlined"
+                        placeholder="Password"
+                        onChangeText={handleChange(setPassword)}
+                        left={<TextInput.Icon icon="key" color={(isFocused) => isFocused ? theme.colors.primary : theme.colors.primary} />}
+                        secureTextEntry
+                    />
+                    <TextInput
+                        value={repeatPassword}
+                        mode="outlined"
+                        onChangeText={handleChange(setRepeatPassword)}
+                        placeholder="Repeat Password"
+                        left={<TextInput.Icon icon="key" color={(isFocused) => isFocused ? theme.colors.primary : theme.colors.primary} />}
+                        secureTextEntry
+                    />
+                    <View style={styles.btnContainer}>
+                        <Text mode="contained" style={styles.btnContent} onPress={handleRegister}>Register</Text>
+                        {/* <Button onPress={() => navigation.navigate("Login")} >Login</Button> */}
+                    </View>
+                    <View style={styles.signincont}>
+                        <Text style={{fontFamily:'Rubik-Regular'}}>ALREADY HAVE AN ACCOUNT?</Text>
+                        <Text onPress={() => navigation.navigate("Login")} style={{color:'#00D287'}}>SIGN IN</Text>
+                    </View>
+                </View>
+              </ImageBackground>
             </View>
-        </View>
-    </View>
 }
 
 const styles = StyleSheet.create({
+    background:{
+        flex:1,
+       
+    },
     container: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
+      
     },
     formContainer: {
         width: "100%",
@@ -77,16 +86,35 @@ const styles = StyleSheet.create({
         marginTop: 8,
     },
     btnContainer: {
-        marginTop: 20
+        marginTop: 20,
+        alignItems:'center'
     },
-    or: {
-        alignSelf: "center",
-        marginVertical: 4
+    btnContent:{
+        width:"100%",
+        backgroundColor: theme.colors.button,
+        marginTop: 20,
+        marginBottom:20,
+        paddingVertical: 15,
+        paddingHorizontal: 10,
+        borderRadius: 30,
+        borderWidth:1,
+        marginHorizontal:20,
+        textAlign:'center',
+        color:theme.colors.white
     },
     title: {
         color: theme.colors.primary
     },
-    subtitile: {
-        color: theme.colors.secondary
+    subtitle: {
+        color: theme.colors.primary,
+        fontFamily:'Montserrat-Bold',
+        fontWeight:'bold',
+        textAlign:'center',
+        marginTop:'20%'
+    },
+    signincont:{
+        marginLeft:'15%',
+        marginTop:'70%',
+        flexDirection:'row',
     }
 })
